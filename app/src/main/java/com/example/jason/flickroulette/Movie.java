@@ -1,5 +1,8 @@
 package com.example.jason.flickroulette;
 
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
 /**
  * Created by Jason on 2015-06-19.
  */
@@ -16,6 +19,7 @@ public class Movie {
                  String year, String runtime, String URLLink,
                  String releaseDate, String synopsis,
                  Ratings ratings, Cast[] cast) {
+
         mTitle = title;
         mDescription = description;
         mYear = year;
@@ -29,6 +33,12 @@ public class Movie {
 
     public Ratings getRatings(){
         return mRatings;
+    }
+
+    public void Display() {
+        LinearLayout movieView = (LinearLayout) findViewById(R.id.movie_view);
+        TextView textview = new TextView(this);
+
     }
 
 
