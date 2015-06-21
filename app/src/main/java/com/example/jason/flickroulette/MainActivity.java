@@ -36,19 +36,30 @@ public class MainActivity extends ActionBarActivity {
         mLogo = (TextView) findViewById(R.id.LogoView);
         mSpinButton = (Button) findViewById(R.id.spinButton);
 
-        TextView mTitleView = (TextView) findViewById(R.id.title);
-        TextView mYearView = (TextView) findViewById(R.id.year);
-        TextView mRunTimeView = (TextView) findViewById(R.id.runtime);
-        TextView mLinkView = (TextView) findViewById(R.id.link);
-        TextView mReleaseDateView = (TextView) findViewById(R.id.releaseDate);
-        TextView mSynopsisView = (TextView) findViewById(R.id.synopsis);
+        final MovieTree movieList = new MovieTree();
 
-        LinearLayout movieView = (LinearLayout) findViewById(R.id.movie_view);
-
-        getMovies();
+        movieList.addMovie("ngieorgnorign", "1effefe996", "ef", "efef"
+                , "efefefef", "July 1923", "fefefef",
+                new Movie.Ratings("34343", "fefefefe", 99, 98)
+                , new Movie.Cast[]{new Movie.Cast("Jason", "Xu")});
 
 
+
+        mSpinButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //mLogo.setText("LOL");
+                LinearLayout movieView = (LinearLayout) findViewById(R.id.movie_view);
+
+
+                movieList.inOrderDisplay(movieList.root);
+
+                setContentView(R.layout.movie_view);
+            }
+        });
     }
+
+
 
     private void getMovies() {
         String apiKey = "sjy2wegm4tgz8dxt3su2txd6";
@@ -77,13 +88,7 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
-        mSpinButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //mLogo.setText("LOL");
-                setContentView(R.layout.movie_view);
-            }
-        });
+
     }
 
     private boolean isNetworkAvailable() {

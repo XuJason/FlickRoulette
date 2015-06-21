@@ -1,5 +1,8 @@
 package com.example.jason.flickroulette;
 
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
 /**
  * Created by Jason on 2015-06-21.
  */
@@ -30,7 +33,7 @@ public class MovieTree {
                     current = current.leftChild;
 
                     if (current == null) {
-                        parent = parent.leftChild;
+                        parent.leftChild = newMovie;
 
                         return;
                     }
@@ -39,7 +42,7 @@ public class MovieTree {
                     current = current.rightChild;
 
                     if(current == null){
-                        parent = parent.rightChild;
+                        parent.rightChild = newMovie;
 
                         return;
                     }
@@ -48,12 +51,15 @@ public class MovieTree {
         }
     }
 
-    public void inOrderTraverse(Movie movie){
-        inOrderTraverse(movie.leftChild);
+    public void inOrderDisplay(Movie movie) {
+        if (movie != null) {
+            inOrderDisplay(movie.leftChild);
 
-        inOrderTraverse(movie.rightChild);
+            //movie.Display(movie, movieView);
+            System.out.println(movie.getTitle());
+            System.out.println(movie.getRatings().getAvgScore());
+
+            inOrderDisplay(movie.rightChild);
+        }
     }
-
-
-
 }

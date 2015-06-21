@@ -35,19 +35,31 @@ public class Movie {
         mCast = cast;
     }
 
+    public String getTitle(){
+        return mTitle;
+    }
+
     public Ratings getRatings(){
         return mRatings;
     }
 
-    public void Display(Movie movie, LinearLayout movieView, TextView titleView,
-                        TextView yearView, TextView URLLinkView, TextView releaseDateView,
-                        TextView synopsisView, TextView ratingsView, TextView castView,
-                        ImageView poster) {
-        titleView.setText(movie.mTitle);
+    /*
+    public void Display(Movie movie, LinearLayout movieView) {
+        TextView mTitleView = (TextView) movieView.findViewById(R.id.title);
+        TextView mYearView = (TextView) movieView.findViewById(R.id.year);
+        TextView mRunTimeView = (TextView) movieView.findViewById(R.id.runtime);
+        TextView mLinkView = (TextView) movieView.findViewById(R.id.link);
+        TextView mReleaseDateView = (TextView) movieView.findViewById(R.id.releaseDate);
+        TextView mSynopsisView = (TextView) movieView.findViewById(R.id.synopsis);
 
-
-
+        mTitleView.setText(mTitle);
+        mYearView.setText(mYear);
+        mRunTimeView.setText(mRuntime);
+        mLinkView.setText(mURLLink);
+        mReleaseDateView.setText(mReleaseDate);
+        mSynopsisView.setText(mSynopsis);
     }
+    */
 
 
     /**
