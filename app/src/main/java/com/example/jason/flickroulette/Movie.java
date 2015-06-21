@@ -4,6 +4,9 @@ package com.example.jason.flickroulette;
  * Created by Jason on 2015-06-19.
  */
 public class Movie {
+    Movie leftChild;
+    Movie rightChild;
+
     private String mTitle, mDescription, mYear,
         mRuntime,mURLLink,mReleaseDate, mSynopsis;
     private MovieRatings mRatings;
@@ -24,75 +27,34 @@ public class Movie {
         mCast = cast;
     }
 
-    public String getTitle() {
-        return mTitle;
+
+    /**
+     * Created by Jason on 2015-06-19.
+     */
+    public static class Cast {
+        private String mName, mCharacter;
+
+        public Cast(String Name, String mCharacter) {
+            this.mName = Name;
+            this.mCharacter = mCharacter;
+        }
+
     }
 
-    public void setTitle(String title) {
-        mTitle = title;
-    }
+    /**
+     * Created by Jason on 2015-06-19.
+     */
+    public static class MovieRatings {
 
-    public String getDescription() {
-        return mDescription;
-    }
+        private String mCriticsRating, mAudienceRating;
+        private int mCriticsScore, mAudienceScore;
 
-    public void setDescription(String description) {
-        mDescription = description;
-    }
-
-    public String getYear() {
-        return mYear;
-    }
-
-    public void setYear(String year) {
-        mYear = year;
-    }
-
-    public String getRuntime() {
-        return mRuntime;
-    }
-
-    public void setRuntime(String runtime) {
-        mRuntime = runtime;
-    }
-
-    public String getURLLink() {
-        return mURLLink;
-    }
-
-    public void setURLLink(String URLLink) {
-        mURLLink = URLLink;
-    }
-
-    public String getReleaseDate() {
-        return mReleaseDate;
-    }
-
-    public void setReleaseDate(String releaseDate) {
-        mReleaseDate = releaseDate;
-    }
-
-    public String getSynopsis() {
-        return mSynopsis;
-    }
-
-    public void setSynopsis(String synopsis) {
-        mSynopsis = synopsis;
-    }
-
-    public MovieRatings getRatings() {
-        return mRatings;
-    }
-
-    public void setRatings(MovieRatings ratings) {
-        mRatings = ratings;
-    }
-
-    public Cast[] getCast() {
-        return mCast;
-    }
-
-    public void setCast(Cast[] cast) {
-        mCast = cast;
+        public MovieRatings(String mCriticsRating, String mAudienceRating,
+                            int mCriticsScore, int mAudienceScore) {
+            this.mCriticsRating = mCriticsRating;
+            this.mAudienceRating = mAudienceRating;
+            this.mCriticsScore = mCriticsScore;
+            this.mAudienceScore = mAudienceScore;
+        }
     }
 }
