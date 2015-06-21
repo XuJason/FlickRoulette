@@ -9,13 +9,13 @@ public class Movie {
 
     private String mTitle, mDescription, mYear,
         mRuntime,mURLLink,mReleaseDate, mSynopsis;
-    private MovieRatings mRatings;
+    private Ratings mRatings;
     private Cast[] mCast;
 
     public Movie(String title, String description,
                  String year, String runtime, String URLLink,
                  String releaseDate, String synopsis,
-                 MovieRatings ratings, Cast[] cast) {
+                 Ratings ratings, Cast[] cast) {
         mTitle = title;
         mDescription = description;
         mYear = year;
@@ -25,6 +25,10 @@ public class Movie {
         mSynopsis = synopsis;
         mRatings = ratings;
         mCast = cast;
+    }
+
+    public Ratings getRatings(){
+        return mRatings;
     }
 
 
@@ -44,17 +48,22 @@ public class Movie {
     /**
      * Created by Jason on 2015-06-19.
      */
-    public static class MovieRatings {
+    public static class Ratings {
 
         private String mCriticsRating, mAudienceRating;
-        private int mCriticsScore, mAudienceScore;
+        private int mCriticsScore, mAudienceScore, mAvgScore;
 
-        public MovieRatings(String mCriticsRating, String mAudienceRating,
-                            int mCriticsScore, int mAudienceScore) {
+        public Ratings(String mCriticsRating, String mAudienceRating,
+                       int mCriticsScore, int mAudienceScore) {
             this.mCriticsRating = mCriticsRating;
             this.mAudienceRating = mAudienceRating;
             this.mCriticsScore = mCriticsScore;
             this.mAudienceScore = mAudienceScore;
+            mAvgScore = (mCriticsScore+mAudienceScore)/2;
+        }
+
+        public int getAvgScore(){
+            return mAvgScore;
         }
     }
 }
