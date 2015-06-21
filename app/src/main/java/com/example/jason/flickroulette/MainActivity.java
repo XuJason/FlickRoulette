@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.squareup.okhttp.Call;
@@ -34,6 +35,15 @@ public class MainActivity extends ActionBarActivity {
 
         mLogo = (TextView) findViewById(R.id.LogoView);
         mSpinButton = (Button) findViewById(R.id.spinButton);
+
+        TextView mTitleView = (TextView) findViewById(R.id.title);
+        TextView mYearView = (TextView) findViewById(R.id.year);
+        TextView mRunTimeView = (TextView) findViewById(R.id.runtime);
+        TextView mLinkView = (TextView) findViewById(R.id.link);
+        TextView mReleaseDateView = (TextView) findViewById(R.id.releaseDate);
+        TextView mSynopsisView = (TextView) findViewById(R.id.synopsis);
+
+        LinearLayout movieView = (LinearLayout) findViewById(R.id.movie_view);
 
         getMovies();
 

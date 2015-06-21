@@ -51,8 +51,6 @@ public class MovieTree {
     public void inOrderTraverse(Movie movie){
         inOrderTraverse(movie.leftChild);
 
-        movie.Display();
-
         inOrderTraverse(movie.rightChild);
     }
 

@@ -1,7 +1,12 @@
 package com.example.jason.flickroulette;
 
+import android.content.Context;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 /**
  * Created by Jason on 2015-06-19.
@@ -10,23 +15,22 @@ public class Movie {
     Movie leftChild;
     Movie rightChild;
 
-    private String mTitle, mDescription, mYear,
-        mRuntime,mURLLink,mReleaseDate, mSynopsis;
+    private String mTitle, mYear,
+        mRuntime,mURLLink,mReleaseDate, mSynopsis, mPoster;
     private Ratings mRatings;
     private Cast[] mCast;
 
-    public Movie(String title, String description,
-                 String year, String runtime, String URLLink,
-                 String releaseDate, String synopsis,
-                 Ratings ratings, Cast[] cast) {
+    public Movie(String title, String year, String runtime,
+                 String URLLink, String releaseDate,
+                 String synopsis, String poster, Ratings ratings, Cast[] cast) {
 
         mTitle = title;
-        mDescription = description;
         mYear = year;
         mRuntime = runtime;
         mURLLink = URLLink;
         mReleaseDate = releaseDate;
         mSynopsis = synopsis;
+        mPoster = poster;
         mRatings = ratings;
         mCast = cast;
     }
@@ -35,9 +39,13 @@ public class Movie {
         return mRatings;
     }
 
-    public void Display() {
-        LinearLayout movieView = (LinearLayout) findViewById(R.id.movie_view);
-        TextView textview = new TextView(this);
+    public void Display(Movie movie, LinearLayout movieView, TextView titleView,
+                        TextView yearView, TextView URLLinkView, TextView releaseDateView,
+                        TextView synopsisView, TextView ratingsView, TextView castView,
+                        ImageView poster) {
+        titleView.setText(movie.mTitle);
+
+
 
     }
 

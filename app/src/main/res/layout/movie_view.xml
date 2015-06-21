@@ -9,7 +9,38 @@
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap;kop_content"
-        android:text="This is a test"/>
+        android:layout_height="wrap_content"
+        android:text="This is a test"
+        android:id = "@id/title"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="This is a test"
+        android:id = "@+id/year"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="This is a test"
+        android:id = "@+id/runtime"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="This is a test"
+        android:id = "@+id/link"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="This is a test"
+        android:id = "@+id/releaseDate"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="This is a test"
+        android:id = "@+id/synopsis"/>
 
 </LinearLayout>
