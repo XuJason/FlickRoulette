@@ -10,23 +10,21 @@ public class MovieTree {
 
     Movie root;
 
-    public void addMovie(String title, String description,
-                         String year, String runtime, String URLLink,
-                         String releaseDate, String synopsis,
-                         Movie.Ratings ratings, Movie.Cast[] cast) {
+    public void addMovie(String title, String year, String runtime,
+                         String URLLink, String releaseDate, String synopsis,
+                         String poster, Movie.Ratings ratings, Movie.Cast[] cast) {
 
-        Movie newMovie = new Movie(title, description, year, runtime,
-                                    URLLink, releaseDate, synopsis,
-                                    ratings, cast);
+        Movie newMovie = new Movie(title, year, runtime,
+                URLLink, releaseDate, synopsis,poster,
+                ratings, cast);
 
-        if(root == null){
+        if (root == null) {
             root = newMovie;
-        }
-        else{
+        } else {
             Movie current = root;
             Movie parent;
 
-            while(true) {
+            while (true) {
                 parent = current;
 
                 if (ratings.getAvgScore() < current.getRatings().getAvgScore()) {
@@ -37,11 +35,10 @@ public class MovieTree {
 
                         return;
                     }
-                }
-                else{
+                } else {
                     current = current.rightChild;
 
-                    if(current == null){
+                    if (current == null) {
                         parent.rightChild = newMovie;
 
                         return;
@@ -61,5 +58,40 @@ public class MovieTree {
 
             inOrderDisplay(movie.rightChild);
         }
+    }
+
+    public Movie findParent(Movie movie) {
+        Movie current = root;
+
+        while ((movie.leftChild.getRatings().getAvgScore() != current.getRatings().getAvgScore())
+               && movie.rightChild.getRatings().getAvgScore() != current.getRatings().getAvgScore()) {
+            if (current.getRatings().getAvgScore() < movie.getRatings().getAvgScore()) {
+                current = current.leftChild;
+            } else {
+                current = current.rightChild;
+            }
+
+            if (current == null) {
+                return null;
+            }
+        }
+        return current;
+    }
+
+    public Movie findNext(Movie movie) {
+        Movie current = root;
+        Movie next = current;
+        if(movie.leftChild != null){
+            return movie.leftChild;
+        }
+
+        return movie;
+    }
+
+    public Movie findPrev(Movie movie) {
+        Movie current = root;
+
+
+        return movie.rightChild;
     }
 }

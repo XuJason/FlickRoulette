@@ -1,6 +1,7 @@
 package com.example.jason.flickroulette;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v7.app.ActionBarActivity;
@@ -36,30 +37,18 @@ public class MainActivity extends ActionBarActivity {
         mLogo = (TextView) findViewById(R.id.LogoView);
         mSpinButton = (Button) findViewById(R.id.spinButton);
 
-        final MovieTree movieList = new MovieTree();
-
-        movieList.addMovie("ngieorgnorign", "1effefe996", "ef", "efef"
-                , "efefefef", "July 1923", "fefefef",
-                new Movie.Ratings("34343", "fefefefe", 99, 98)
-                , new Movie.Cast[]{new Movie.Cast("Jason", "Xu")});
-
 
 
         mSpinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //mLogo.setText("LOL");
-                LinearLayout movieView = (LinearLayout) findViewById(R.id.movie_view);
-
-
-                movieList.inOrderDisplay(movieList.root);
-
-                setContentView(R.layout.movie_view);
+                Intent intent = new Intent(MainActivity.this, MovieActivity.class);
+                startActivity(intent);
             }
         });
+
+
     }
-
-
 
     private void getMovies() {
         String apiKey = "sjy2wegm4tgz8dxt3su2txd6";
@@ -87,8 +76,6 @@ public class MainActivity extends ActionBarActivity {
                 }
             }
         });
-
-
     }
 
     private boolean isNetworkAvailable() {
@@ -101,6 +88,8 @@ public class MainActivity extends ActionBarActivity {
         }
         return isAvailable;
     }
+
+
 
 
     /*

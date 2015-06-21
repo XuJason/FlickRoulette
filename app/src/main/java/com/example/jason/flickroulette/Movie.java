@@ -1,5 +1,6 @@
 package com.example.jason.flickroulette;
 
+import android.app.Fragment;
 import android.content.Context;
 import android.view.View;
 import android.widget.ImageView;
@@ -39,27 +40,37 @@ public class Movie {
         return mTitle;
     }
 
+    public String getYear() {
+        return mYear;
+    }
+
+    public String getRuntime() {
+        return mRuntime;
+    }
+
+    public String getURLLink() {
+        return mURLLink;
+    }
+
+    public String getReleaseDate() {
+        return mReleaseDate;
+    }
+
+    public String getSynopsis() {
+        return mSynopsis;
+    }
+
+    public String getPoster() {
+        return mPoster;
+    }
+
+    public Cast[] getCast() {
+        return mCast;
+    }
+
     public Ratings getRatings(){
         return mRatings;
     }
-
-    /*
-    public void Display(Movie movie, LinearLayout movieView) {
-        TextView mTitleView = (TextView) movieView.findViewById(R.id.title);
-        TextView mYearView = (TextView) movieView.findViewById(R.id.year);
-        TextView mRunTimeView = (TextView) movieView.findViewById(R.id.runtime);
-        TextView mLinkView = (TextView) movieView.findViewById(R.id.link);
-        TextView mReleaseDateView = (TextView) movieView.findViewById(R.id.releaseDate);
-        TextView mSynopsisView = (TextView) movieView.findViewById(R.id.synopsis);
-
-        mTitleView.setText(mTitle);
-        mYearView.setText(mYear);
-        mRunTimeView.setText(mRuntime);
-        mLinkView.setText(mURLLink);
-        mReleaseDateView.setText(mReleaseDate);
-        mSynopsisView.setText(mSynopsis);
-    }
-    */
 
 
     /**
