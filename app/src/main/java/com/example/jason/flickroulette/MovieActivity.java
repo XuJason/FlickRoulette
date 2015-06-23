@@ -1,5 +1,6 @@
 package com.example.jason.flickroulette;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -8,7 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
+import android.widget.Toast;
 
 
 public class MovieActivity extends ActionBarActivity {
@@ -17,12 +18,14 @@ public class MovieActivity extends ActionBarActivity {
     private Movie current;
     private MovieTree movieList;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie);
 
         Intent intent = getIntent();
+
 
         movieList = new MovieTree();
 
@@ -58,7 +61,7 @@ public class MovieActivity extends ActionBarActivity {
                         "Schultz arouse the suspicion of Stephen (Samuel L. Jackson), Candie's " +
                         "trusted house slave. -- (C) Weinstein",
                 "http://www.imdb.com/media/rm2716924928/tt2802144?ref_=tt_ov_i#",
-                new Movie.Ratings("34343", "fefefefe", 33, 33)
+                new Movie.Ratings("34343", "fefefefe", 10, 1)
                 , new Movie.Cast[]{new Movie.Cast("Jamie Foxx", "Django")});
 
         current = movieList.root;
@@ -100,10 +103,14 @@ public class MovieActivity extends ActionBarActivity {
     }
 
     public void changeMovies(boolean direction){
-        if(direction = true){
+        if(direction == true){
+           Toast.makeText(getApplicationContext(), "left movie", Toast.LENGTH_SHORT).show();
+
             current = movieList.findNext(current);
         }
         else{
+            Toast.makeText(getApplicationContext(), "right movie", Toast.LENGTH_SHORT).show();
+
             current = movieList.findPrev(current);
         }
         Display(current);

@@ -63,8 +63,8 @@ public class MovieTree {
     public Movie findParent(Movie movie) {
         Movie current = root;
 
-        while ((movie.leftChild.getRatings().getAvgScore() != current.getRatings().getAvgScore())
-               && movie.rightChild.getRatings().getAvgScore() != current.getRatings().getAvgScore()) {
+        while ((movie.leftChild!= current)
+               && movie.rightChild !=current) {
             if (current.getRatings().getAvgScore() < movie.getRatings().getAvgScore()) {
                 current = current.leftChild;
             } else {
@@ -81,7 +81,7 @@ public class MovieTree {
     public Movie search(Movie movie) {
         Movie current = root;
 
-        while (movie.getRatings().getAvgScore()!= current.getRatings().getAvgScore()) {
+        while (movie!= current) {
             if (current.getRatings().getAvgScore() < movie.getRatings().getAvgScore()) {
                 current = current.leftChild;
             } else {
