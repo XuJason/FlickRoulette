@@ -15,7 +15,7 @@ public class MovieTree {
                          String poster, Movie.Ratings ratings, Movie.Cast[] cast) {
 
         Movie newMovie = new Movie(title, year, runtime,
-                URLLink, releaseDate, synopsis,poster,
+                URLLink, releaseDate, synopsis, poster,
                 ratings, cast);
 
         if (root == null) {
@@ -35,7 +35,8 @@ public class MovieTree {
 
                         return;
                     }
-                } else {
+                }
+                else {
                     current = current.rightChild;
 
                     if (current == null) {
@@ -52,7 +53,6 @@ public class MovieTree {
         if (movie != null) {
             inOrderDisplay(movie.leftChild);
 
-            //movie.Display(movie, movieView);
             System.out.println(movie.getTitle());
             System.out.println(movie.getRatings().getAvgScore());
 
@@ -78,20 +78,92 @@ public class MovieTree {
         return current;
     }
 
-    public Movie findNext(Movie movie) {
+    public Movie search(Movie movie) {
         Movie current = root;
-        Movie next = current;
-        if(movie.leftChild != null){
-            return movie.leftChild;
+
+        while (movie.getRatings().getAvgScore()!= current.getRatings().getAvgScore()) {
+            if (current.getRatings().getAvgScore() < movie.getRatings().getAvgScore()) {
+                current = current.leftChild;
+            } else {
+                current = current.rightChild;
+            }
+
+            if (current == null) {
+                return null;
+            }
+        }
+        return current;
+    }
+
+    public Movie findGreatest(){
+        Movie current = root;
+
+        while(current.rightChild != null){
+            current = current.rightChild;
+        }
+        return current;
+
+    }
+
+    public Movie findLeast(){
+        Movie current = root;
+
+        while(current.leftChild != null){
+            current = current.leftChild;
         }
 
+        return current;
+    }
+
+    public Movie findNext(Movie movie) {
+        Movie parent = findParent(movie);
+
+        if(movie != findGreatest()) {
+
+            if (search(movie).rightChild != null) {
+                return movie.rightChild;
+            } else {
+
+                if (parent.leftChild == movie) {
+                    return parent.leftChild;
+                } else {
+                    Movie current = parent;
+
+                    while (parent.leftChild != current) {
+                        current = parent;
+                        parent = findParent(parent);
+                    }
+
+                    return parent;
+                }
+            }
+        }
         return movie;
     }
 
     public Movie findPrev(Movie movie) {
-        Movie current = root;
+        Movie parent = findParent(movie);
 
+        if(movie != findLeast()) {
 
-        return movie.rightChild;
+            if (search(movie).leftChild != null) {
+                return movie.leftChild;
+            } else {
+
+                if (parent.rightChild == movie) {
+                    return parent.rightChild;
+                } else {
+                    Movie current = parent;
+
+                    while (parent.rightChild != current) {
+                        current = parent;
+                        parent = findParent(parent);
+                    }
+
+                    return parent;
+                }
+            }
+        }
+        return movie;
     }
 }
